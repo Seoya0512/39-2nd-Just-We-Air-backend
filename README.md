@@ -2,7 +2,6 @@
 
 <br />
 <br />
-<br />
 
 ## 📌 About Project
 
