@@ -15,8 +15,6 @@ const savePayment = async (paymentKey) => {
     return response.data;
   });
 
-  console.log(result);
-
   const orderNumber = result.orderNumber;
 
   await paymentDao.updateOrderStatus(orderNumber);

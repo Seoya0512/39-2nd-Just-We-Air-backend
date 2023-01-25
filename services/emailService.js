@@ -1,23 +1,25 @@
+const userDao = require("../models/userDao");
+const emailDao = require("../models/emailDao");
+
 const nodemailer = require("nodemailer");
 const handlebars = require("handlebars");
 const path = require("path");
 const fs = require("fs");
 const moment = require("moment");
 
-const userDao = require("../models/userDao");
-const emailDao = require("../models/emailDao");
-
 const sendTicket = async (userId) => {
   const user = await userDao.getUserById(userId);
   const email = user.email;
 
   const info = await emailDao.ticketInfo(email);
+
   const formatDepartureDate = moment(info.departure_date).format(
     "YY-MM-DD HH:MM:SS"
   );
   const formatArrivalDate = moment(info.arrival_date).format(
     "YY-MM-DD HH:MM:SS"
   );
+
   const filePath = path.join(__dirname, "../utils/tickets.html");
   const source = fs.readFileSync(filePath, "utf-8").toString();
   const template = handlebars.compile(source);

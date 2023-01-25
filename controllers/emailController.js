@@ -1,5 +1,5 @@
 const emailService = require("../services/emailService");
-const { catchAsync, raiseCustomError } = require("../utils/error");
+const { catchAsync } = require("../utils/error");
 
 const sendTicket = catchAsync(async (req, res) => {
   const userId = req.user;
